@@ -1,4 +1,4 @@
-FROM centos:7
+FROM registry.dataos.io/library/centos:7
 MAINTAINER Marcos Entenza <mak@redhat.com>
 
 LABEL io.k8s.description="3 Node Redis Cluster" \
