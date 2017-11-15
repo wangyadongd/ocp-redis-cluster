@@ -8,8 +8,14 @@ LABEL io.k8s.description="3 Node Redis Cluster" \
 
 RUN groupadd -r redis && useradd -r -g redis -d /home/redis -m redis
 
+COPY ./ruby-2.3.5-1.el7.centos.x86_64.rpm /root/
+
 RUN yum update -y && \
-yum install -y make gcc rubygems nmap-ncat && yum clean all
+yum install -y make gcc rubygems nmap-ncat && \
+yum install -y /root/ruby-2.3.5-1.el7.centos.x86_64.rpm && yum clean all
+
+#RUN yum update -y && \
+#yum install -y make gcc rubygems nmap-ncat && yum clean all
 
 RUN echo "151.101.64.70 rubygems.org">> /etc/hosts && \
 gem install redis
